@@ -92,8 +92,6 @@ workflows:
       - build:
           name: "Build CPU image"
           <<: *target_cpu
-          requires:
-            - test-python-unit
           filters:
             tags:
               only:
