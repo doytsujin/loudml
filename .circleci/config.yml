@@ -89,28 +89,9 @@ workflows:
       - test-influx1
       - test-opentsdb
       - test-go
-      - test-python-unit
       - build:
           name: "Build CPU image"
           <<: *target_cpu
-          requires:
-            - test-python-unit
-          filters:
-            tags:
-              only:
-                /.*/
-      - build:
-          name: "Build NOAVX image"
-          <<: *target_noavx
-          requires:
-            - test-python-unit
-          filters:
-            tags:
-              only:
-                /.*/
-      - build:
-          name: "Build GPU image"
-          <<: *target_gpu
           requires:
             - test-python-unit
           filters:
